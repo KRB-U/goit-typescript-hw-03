@@ -31,9 +31,15 @@ class Manager extends Employee {
   constructor(name: string, department: string, salary: number) {
     super(name, department, salary + 10000);
   }
+  //   private modifySalary(salaryValue: number): number {
+  // }
+
   // public incrementNumber(value: number): void {
   //   this.salary += value;
   // }
 }
+
+const manager = new Manager("Jane Smith", "Marketing", 0);
+console.log(manager.getEmployeeDetails());
 
 export {};

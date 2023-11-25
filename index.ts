@@ -103,35 +103,35 @@ console.log("Коло: ", circleArea);
 
 // *********
 // застосуємо модифікатори доступу до нашого класу House:
-class House {
-  private street: string;
+// class House {
+//   private street: string;
 
-  private tenants: string[] = [];
+//   private tenants: string[] = [];
 
-  constructor(n: string) {
-    this.street = n;
-  }
+//   constructor(n: string) {
+//     this.street = n;
+//   }
 
-  public showAddress(this: House) {
-    console.log("Address: " + this.street);
-  }
+//   public showAddress(this: House) {
+//     console.log("Address: " + this.street);
+//   }
 
-  public addTenant(tenant: string) {
-    this.tenants.push(tenant);
-  }
+//   public addTenant(tenant: string) {
+//     this.tenants.push(tenant);
+//   }
 
-  public showTenants() {
-    console.log(this.tenants);
-  }
-}
+//   public showTenants() {
+//     console.log(this.tenants);
+//   }
+// }
 
-const house = new House("Middle-earth");
+// const house = new House("Middle-earth");
 
-house.addTenant("Anton");
-house.addTenant("Nikita");
+// house.addTenant("Anton");
+// house.addTenant("Nikita");
 
-house.showTenants(); // ["Anton", "Nikita"]
+// house.showTenants(); // ["Anton", "Nikita"]
 
-house.tenants.push("Anton"); // Помилка: 'tenants' можна викликати лише в межах класу 'House'.
+// house.tenants.push("Anton"); // Помилка: 'tenants' можна викликати лише в межах класу 'House'.
 
-export {};
+// export {};

@@ -1,3 +1,4 @@
+"use strict";
 class Rectangle {
     constructor(width, height) {
         this.width = width;
@@ -72,25 +73,26 @@ console.log("Коло: ", circleArea);
 // b.showProperty();
 // *********
 // застосуємо модифікатори доступу до нашого класу House:
-class House {
-    constructor(n) {
-        this.tenants = [];
-        this.street = n;
-    }
-    showAddress() {
-        console.log("Address: " + this.street);
-    }
-    addTenant(tenant) {
-        this.tenants.push(tenant);
-    }
-    showTenants() {
-        console.log(this.tenants);
-    }
-}
-const house = new House("Middle-earth");
-house.addTenant("Anton");
-house.addTenant("Nikita");
-house.showTenants(); // ["Anton", "Nikita"]
-house.tenants.push("Anton"); // Помилка: 'tenants' можна викликати лише в межах класу 'House'.
-export {};
+// class House {
+//   private street: string;
+//   private tenants: string[] = [];
+//   constructor(n: string) {
+//     this.street = n;
+//   }
+//   public showAddress(this: House) {
+//     console.log("Address: " + this.street);
+//   }
+//   public addTenant(tenant: string) {
+//     this.tenants.push(tenant);
+//   }
+//   public showTenants() {
+//     console.log(this.tenants);
+//   }
+// }
+// const house = new House("Middle-earth");
+// house.addTenant("Anton");
+// house.addTenant("Nikita");
+// house.showTenants(); // ["Anton", "Nikita"]
+// house.tenants.push("Anton"); // Помилка: 'tenants' можна викликати лише в межах класу 'House'.
+// export {};
 //# sourceMappingURL=index.js.map
