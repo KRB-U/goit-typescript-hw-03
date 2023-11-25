@@ -12,6 +12,7 @@ class Rectangle implements Shape {
   }
 
   calculateArea(): number {
+    console.log(this.width * this.height);
     return this.width * this.height;
   }
 }

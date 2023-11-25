@@ -5,6 +5,7 @@ class Rectangle {
         this.height = height;
     }
     calculateArea() {
+        console.log(this.width * this.height);
         return this.width * this.height;
     }
 }
