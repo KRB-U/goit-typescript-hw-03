@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "allowJs": false,
+    // "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -12,7 +12,14 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "target": "es2019",
-    "sourceMap": true
+    "sourceMap": true,
+    //new
+    "allowJs": true,
+    "preserveConstEnums": true,
+    "strict": true,
+    "moduleResolution": "node10"
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  // new
+  "exclude": ["./node_modules"]
 }
