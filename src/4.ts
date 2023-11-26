@@ -48,9 +48,9 @@ class MyHouse extends House {
   openDoor(key: Key): void {
     if (key.getSignature() === this.key.getSignature()) {
       this.door = true;
-      console.log("Двері відчинені");
+      console.log("Вхід дозволено");
     } else {
-      console.log("Двері зачинені");
+      console.log("Вхід заборонено");
     }
   }
 }
