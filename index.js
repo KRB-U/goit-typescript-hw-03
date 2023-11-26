@@ -1,4 +1,3 @@
-"use strict";
 class Rectangle {
     constructor(width, height) {
         this.width = width;
@@ -115,4 +114,129 @@ console.log("Коло: ", circleArea);
 // }
 // class BrokenPlane extends Plane {} // Error: Клас 'BrokenPlane' не реалізовує унаслідований абстрактний метод 'startEngine' з класу 'Plane'.
 // export {};
+// interface IPerson {
+//   readonly name: string;
+//   age: number;
+//   greet(phrase: string): void;
+// }
+// const pers: IPerson = {
+//   name: "Mango",
+// };
+// pers.name = "Poly";
+// interface IPilot extends IPerson {
+//   flyMessage(): void;
+// }
+// ******
+// interface IPerson {
+//   name?: string;
+//   age: number;
+// }
+// class Person implements IPerson {
+//   constructor(public age: number, public name?: string) {}
+//   setName(n: string) {
+//     this.name = n;
+//   }
+// }
+// const newVal = new Person(33, "ddd");
+// console.log(newVal);
+// ***********
+// class Parent {
+//   private privateProperty: number; // Приватна властивість з модифікатором доступу private
+//   constructor() {
+//     this.privateProperty = 42;
+//   }
+// }
+// // class Child extends Parent {
+// //   constructor() {
+// //     super();
+// //     console.log(this.privateProperty); // Спроба доступу до приватної властивості з підкласу
+// //   }
+// // }
+// const parent = new Parent();
+// console.log(parent.privateProperty); // Спроба доступу до приватної властивості з екземпляра класу Parent
+// ***********
+// class Team {
+//   members: Programmer[];
+//   constructor(members: Programmer[]) {
+//     this.members = members;
+//   }
+//   startProject() {
+//     this.members.forEach((member) => member.code());
+//   }
+// }
+// class Programmer {
+//   code() {
+//     console.log("Coding...");
+//   }
+// }
+// const programmers = [new Programmer(), new Programmer()];
+// const team = new Team(programmers);
+// team.startProject();
+// *******
+// class Computer {
+//   processor: Processor;
+//   constructor() {
+//     this.processor = new Processor();
+//   }
+//   start() {
+//     this.processor.processData();
+//   }
+// }
+// class Processor {
+//   processData() {
+//     console.log("Processing data...");
+//   }
+// }
+// const computer = new Computer();
+// computer.start();
+//***********
+class Key {
+    constructor() {
+        this.signature = Math.random();
+    }
+    getSignature() {
+        return this.signature;
+    }
+}
+class Person {
+    constructor(key) {
+        this.key = key;
+    }
+    getKey() {
+        return this.key;
+    }
+}
+class House {
+    constructor(key) {
+        this.tenants = [];
+        this.door = false;
+        this.key = key;
+    }
+    comeIn(human) {
+        if (this.door) {
+            this.tenants.push(human);
+            console.log("Двері відчинені");
+        }
+        else {
+            console.log("Двері зачинені");
+        }
+    }
+}
+class MyHouse extends House {
+    openDoor(key) {
+        if (key.getSignature() === this.key.getSignature()) {
+            this.door = true;
+            console.log("Вхід дозволено");
+        }
+        else {
+            console.log("Вхід заборонено");
+        }
+    }
+}
+const key = new Key();
+const house = new MyHouse(key);
+const person = new Person(key);
+house.openDoor(person.getKey());
+house.comeIn(person);
+export {};
 //# sourceMappingURL=index.js.map
