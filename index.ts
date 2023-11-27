@@ -264,70 +264,215 @@ console.log("Коло: ", circleArea);
 // computer.start();
 
 //***********
-class Key {
-  private signature: number;
+// class Key {
+//   private signature: number;
 
-  constructor() {
-    this.signature = Math.random();
+//   constructor() {
+//     this.signature = Math.random();
+//   }
+
+//   getSignature() {
+//     return this.signature;
+//   }
+// }
+
+// class Person {
+//   private key: Key;
+
+//   constructor(key: Key) {
+//     this.key = key;
+//   }
+
+//   getKey(): Key {
+//     return this.key;
+//   }
+// }
+
+// abstract class House {
+//   protected door: boolean;
+//   protected key: Key;
+//   protected tenants: Person[] = [];
+
+//   constructor(key: Key) {
+//     this.door = false;
+//     this.key = key;
+//   }
+
+//   comeIn(human: Person): void {
+//     if (this.door) {
+//       this.tenants.push(human);
+//       console.log("Двері відчинені");
+//     } else {
+//       console.log("Двері зачинені");
+//     }
+//   }
+
+//   abstract openDoor(key: Key): void;
+// }
+
+// class MyHouse extends House {
+//   openDoor(key: Key): void {
+//     if (key.getSignature() === this.key.getSignature()) {
+//       this.door = true;
+//       console.log("Вхід дозволено");
+//     } else {
+//       console.log("Вхід заборонено");
+//     }
+//   }
+// }
+
+// const key = new Key();
+
+// const house = new MyHouse(key);
+// const person = new Person(key);
+
+// house.openDoor(person.getKey());
+
+// house.comeIn(person);
+
+// ****************
+// class Car {
+//   constructor(
+//     public model: string,
+
+//     public year: number,
+
+//     public color: string
+//   ) {}
+// }
+
+// class CarBuilder {
+//   private model: string;
+
+//   private year: number;
+
+//   private color: string;
+
+//   setModel(model: string): CarBuilder {
+//     this.model = model;
+
+//     return this;
+//   }
+
+//   setYear(year: number): CarBuilder {
+//     this.year = year;
+
+//     return this;
+//   }
+
+//   setColor(color: string): CarBuilder {
+//     this.color = color;
+
+//     return this;
+//   }
+
+//   build(): Car {
+//     return new Car(this.model, this.year, this.color);
+//   }
+// }
+
+// const builder = new CarBuilder();
+
+// const car = builder
+//   .setModel("Tesla Model S")
+//   .setYear(2023)
+//   .setColor("Red")
+//   .build();
+
+// console.log(car);
+
+// ***************
+// interface State {
+//   proceedToNext(order: Order): void;
+//   toString(): string;
+// }
+
+// class Order {
+//   private state: State;
+
+//   constructor() {
+//     this.state = new PendingState();
+//   }
+
+//   public proceedToNext() {
+//     this.state.proceedToNext(this);
+//   }
+
+//   public setState(state: State) {
+//     this.state = state;
+//   }
+
+//   public toString(): string {
+//     return this.state.toString();
+//   }
+// }
+
+// class PendingState implements State {
+//   public proceedToNext(order: Order): void {
+//     console.log("Proceeding from Pending to Shipped...");
+//     order.setState(new ShippedState());
+//   }
+
+//   public toString(): string {
+//     return "Pending";
+//   }
+// }
+
+// class ShippedState implements State {
+//   public proceedToNext(order: Order): void {
+//     console.log("Proceeding from Shipped to Delivered...");
+//     order.setState(new DeliveredState());
+//   }
+
+//   public toString(): string {
+//     return "Shipped";
+//   }
+// }
+
+// class DeliveredState implements State {
+//   public proceedToNext(order: Order): void {
+//     console.log("Already delivered. Thank you!");
+//   }
+
+//   public toString(): string {
+//     return "Delivered";
+//   }
+// }
+
+// let order = new Order();
+// console.log(order.toString()); // Output: Pending
+
+// order.proceedToNext();
+// console.log(order.toString()); // Output: Shipped
+
+// order.proceedToNext();
+// console.log(order.toString()); // Output: Delivered
+
+// order.proceedToNext(); // Output: Already delivered. Thank you!
+
+// ******************
+
+class Car {
+  driver: Driver | null = null;
+
+  setDriver(driver: Driver) {
+    this.driver = driver;
   }
 
-  getSignature() {
-    return this.signature;
-  }
-}
-
-class Person {
-  private key: Key;
-
-  constructor(key: Key) {
-    this.key = key;
-  }
-
-  getKey(): Key {
-    return this.key;
-  }
-}
-
-abstract class House {
-  protected door: boolean;
-  protected key: Key;
-  protected tenants: Person[] = [];
-
-  constructor(key: Key) {
-    this.door = false;
-    this.key = key;
-  }
-
-  comeIn(human: Person): void {
-    if (this.door) {
-      this.tenants.push(human);
-      console.log("Двері відчинені");
-    } else {
-      console.log("Двері зачинені");
+  startJourney() {
+    if (this.driver) {
+      this.driver.drive();
     }
   }
-
-  abstract openDoor(key: Key): void;
 }
 
-class MyHouse extends House {
-  openDoor(key: Key): void {
-    if (key.getSignature() === this.key.getSignature()) {
-      this.door = true;
-      console.log("Вхід дозволено");
-    } else {
-      console.log("Вхід заборонено");
-    }
+class Driver {
+  drive() {
+    console.log("Driving...");
   }
 }
 
-const key = new Key();
-
-const house = new MyHouse(key);
-const person = new Person(key);
-
-house.openDoor(person.getKey());
-
-house.comeIn(person);
-
-export {};
+const driver = new Driver();
+const car = new Car();
+car.setDriver(driver);
+car.startJourney();
